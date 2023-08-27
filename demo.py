@@ -243,3 +243,6 @@ if "eventsSet" in state:
     st.session_state["events"] = state["eventsSet"]
 
 st.write(state)
+
+st.markdown("## API reference")
+st.help(calendar)
