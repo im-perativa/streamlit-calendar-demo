@@ -22,9 +22,6 @@ mode = st.selectbox(
     ),
 )
 
-calendar_options = {
-    "editable": "true",
-}
 events = [
     {
         "title": "Event 1",
@@ -155,81 +152,76 @@ calendar_resources = [
     {"id": "f", "building": "Building C", "title": "Room F"},
 ]
 
+calendar_options = {
+    "editable": "true",
+    "navLinks": "true",
+    "resources": calendar_resources,
+}
+
 if "resource" in mode:
     if mode == "resource-daygrid":
         calendar_options = {
-            "editable": "true",
-            "navLinks": "true",
+            **calendar_options,
             "initialDate": "2023-07-01",
             "initialView": "resourceDayGridDay",
             "resourceGroupField": "building",
-            "resources": calendar_resources,
         }
     elif mode == "resource-timeline":
         calendar_options = {
-            "editable": "true",
+            **calendar_options,
             "headerToolbar": {
                 "left": "today prev,next",
                 "center": "title",
                 "right": "resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth",
             },
-            "navLinks": "true",
             "initialDate": "2023-07-01",
             "initialView": "resourceTimelineDay",
             "resourceGroupField": "building",
-            "resources": calendar_resources,
         }
     elif mode == "resource-timegrid":
         calendar_options = {
-            "editable": "true",
-            "navLinks": "true",
+            **calendar_options,
             "initialDate": "2023-07-01",
             "initialView": "resourceTimeGridDay",
             "resourceGroupField": "building",
-            "resources": calendar_resources,
         }
 else:
     if mode == "daygrid":
         calendar_options = {
-            "editable": "true",
+            **calendar_options,
             "headerToolbar": {
                 "left": "today prev,next",
                 "center": "title",
                 "right": "dayGridDay,dayGridWeek,dayGridMonth",
             },
-            "navLinks": "true",
             "initialDate": "2023-07-01",
             "initialView": "dayGridMonth",
         }
     elif mode == "timegrid":
         calendar_options = {
-            "editable": "true",
-            "navLinks": "true",
+            **calendar_options,
             "initialView": "timeGridWeek",
         }
     elif mode == "timeline":
         calendar_options = {
-            "editable": "true",
+            **calendar_options,
             "headerToolbar": {
                 "left": "today prev,next",
                 "center": "title",
                 "right": "timelineDay,timelineWeek,timelineMonth",
             },
-            "navLinks": "true",
             "initialDate": "2023-07-01",
             "initialView": "timelineMonth",
         }
     elif mode == "list":
         calendar_options = {
-            "editable": "true",
-            "navLinks": "true",
+            **calendar_options,
             "initialDate": "2023-07-01",
             "initialView": "listMonth",
         }
     elif mode == "multimonth":
         calendar_options = {
-            "editable": "true",
-            "navLinks": "true",
+            **calendar_options,
             "initialView": "multiMonthYear",
         }
 
@@ -239,7 +231,7 @@ state = calendar(
     key=mode,
 )
 
-if "eventsSet" in state:
+if state.get("eventsSet") is not None:
     st.session_state["events"] = state["eventsSet"]
 
 st.write(state)
