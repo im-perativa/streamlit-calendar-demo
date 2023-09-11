@@ -5,7 +5,11 @@ from streamlit_calendar import calendar
 st.set_page_config(page_title="Demo for streamlit-calendar", page_icon="📆")
 
 st.markdown(
-    "## Demo for [streamlit-calendar](https://github.com/im-perativa/streamlit-calendar)"
+    "## Demo for [streamlit-calendar](https://github.com/im-perativa/streamlit-calendar) 📆"
+)
+
+st.markdown(
+    "[![](https://img.shields.io/github/stars/im-perativa/streamlit-calendar?style=social)](https://github.com/im-perativa/streamlit-calendar)"
 )
 
 mode = st.selectbox(
