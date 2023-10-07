@@ -232,6 +232,20 @@ else:
 state = calendar(
     events=st.session_state.get("events", events),
     options=calendar_options,
+    custom_css="""
+    .fc-event-past {
+        opacity: 0.8;
+    }
+    .fc-event-time {
+        font-style: italic;
+    }
+    .fc-event-title {
+        font-weight: 700;
+    }
+    .fc-toolbar-title {
+        font-size: 2rem;
+    }
+    """,
     key=mode,
 )
 
