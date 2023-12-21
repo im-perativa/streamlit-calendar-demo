@@ -160,6 +160,7 @@ calendar_options = {
     "editable": "true",
     "navLinks": "true",
     "resources": calendar_resources,
+    "selectable": "true",
 }
 
 if "resource" in mode:
